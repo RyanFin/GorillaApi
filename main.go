@@ -9,6 +9,7 @@ import (
 	"os"
 	"time"
 
+	"github.com/dgrijalva/jwt-go"
 	"github.com/gorilla/mux"
 )
 
@@ -17,12 +18,22 @@ const (
 	port = ":8080"
 )
 
+var jwtKey = []byte("my_secret_key")
+
+type Claims struct {
+	Username string `json:"username"`
+	jwt.StandardClaims
+}
+
 func main() {
 
 	r := mux.NewRouter()
-	r.HandleFunc("/cars/", getAllCarsHandler).Methods(http.MethodGet)
-	r.HandleFunc("/cars/{id}", getCarByIDHandler).Methods(http.MethodGet)
+
+	r.HandleFunc("/token", generateTokenHandler).Methods(http.MethodGet)
+	r.HandleFunc("/cars", authenticate(getAllCarsHandler)).Methods(http.MethodGet)
+	r.HandleFunc("/cars/{id}", authenticate(getCarByIDHandler)).Methods(http.MethodGet)
 	http.Handle("/", r)
+
 	srv := &http.Server{
 		Handler: r,
 		Addr:    fmt.Sprintf("%s%s", addr, port),
@@ -97,11 +108,65 @@ func loadDataFromJSONFile() ([]model.Car, error) {
 	return cars, nil
 }
 
-func simpleMw(next http.Handler) http.Handler {
+func generateTokenHandler(w http.ResponseWriter, r *http.Request) {
+	expirationTime := time.Now().Add(5 * time.Minute)
+	claims := &Claims{
+		Username: "user",
+		StandardClaims: jwt.StandardClaims{
+			ExpiresAt: expirationTime.Unix(),
+		},
+	}
+
+	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
+	tokenString, err := token.SignedString(jwtKey)
+	if err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
+		fmt.Fprintf(w, "Error generating token: %v", err)
+		return
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(map[string]string{"token": tokenString})
+}
+
+// Authentication middleware
+func authenticate(next http.HandlerFunc) http.HandlerFunc {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		// Do stuff here
-		log.Println(r.RequestURI)
-		// Call the next handler, which can be another middleware in the chain, or the final handler.
+		if r.URL.Path == "/token" {
+			next.ServeHTTP(w, r)
+			return
+		}
+
+		authHeader := r.Header.Get("Authorization")
+		if authHeader == "" {
+			w.WriteHeader(http.StatusUnauthorized)
+			fmt.Fprintf(w, "Unauthorized")
+			return
+		}
+
+		tokenString := authHeader[len("Bearer "):]
+
+		claims := &Claims{}
+		token, err := jwt.ParseWithClaims(tokenString, claims, func(token *jwt.Token) (interface{}, error) {
+			return jwtKey, nil
+		})
+		if err != nil {
+			if err == jwt.ErrSignatureInvalid {
+				w.WriteHeader(http.StatusUnauthorized)
+				fmt.Fprintf(w, "Unauthorized")
+				return
+			}
+			w.WriteHeader(http.StatusBadRequest)
+			fmt.Fprintf(w, "Bad Request")
+			return
+		}
+
+		if !token.Valid {
+			w.WriteHeader(http.StatusUnauthorized)
+			fmt.Fprintf(w, "Unauthorized")
+			return
+		}
+
 		next.ServeHTTP(w, r)
 	})
 }
