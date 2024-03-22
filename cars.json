@@ -1,0 +1,163 @@
+[
+    {
+      "uuid": "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11",
+      "brand": "Toyota",
+      "model": "Corolla",
+      "year": 2018,
+      "color": "Silver",
+      "price": 15000
+    },
+    {
+      "uuid": "3c3d4554-2d1d-4ee1-ae4b-c8be79fc6554",
+      "brand": "Honda",
+      "model": "Civic",
+      "year": 2019,
+      "color": "Blue",
+      "price": 18000
+    },
+    {
+      "uuid": "d4b44e2d-5053-459a-9921-7ee2dfcad066",
+      "brand": "Ford",
+      "model": "Mustang",
+      "year": 2020,
+      "color": "Red",
+      "price": 35000
+    },
+    {
+      "uuid": "6dc35260-7c72-4ec5-a1b1-02a885a9cbad",
+      "brand": "Chevrolet",
+      "model": "Camaro",
+      "year": 2017,
+      "color": "Black",
+      "price": 32000
+    },
+    {
+      "uuid": "d2b87d35-cd7b-4aa1-9cb2-c65e4d4e2550",
+      "brand": "BMW",
+      "model": "X5",
+      "year": 2021,
+      "color": "White",
+      "price": 50000
+    },
+    {
+      "uuid": "0653d0b4-2e49-4d0d-ae74-87a11a03ccf4",
+      "brand": "Mercedes-Benz",
+      "model": "C-Class",
+      "year": 2019,
+      "color": "Gray",
+      "price": 38000
+    },
+    {
+      "uuid": "bf049101-1989-4b13-aa0c-017f8f14b51f",
+      "brand": "Audi",
+      "model": "A4",
+      "year": 2018,
+      "color": "Black",
+      "price": 34000
+    },
+    {
+      "uuid": "43d4f97b-5378-46cb-afe2-9081ec29e4d6",
+      "brand": "Volkswagen",
+      "model": "Golf",
+      "year": 2020,
+      "color": "Blue",
+      "price": 23000
+    },
+    {
+      "uuid": "4b60e6aa-3c0e-4561-8795-414ce22b6786",
+      "brand": "Hyundai",
+      "model": "Elantra",
+      "year": 2019,
+      "color": "White",
+      "price": 19000
+    },
+    {
+      "uuid": "d23d077c-7559-4fa0-8ef3-bf81c764d14d",
+      "brand": "Kia",
+      "model": "Optima",
+      "year": 2017,
+      "color": "Silver",
+      "price": 21000
+    },
+    {
+      "uuid": "e2d2a7d3-2d2b-418b-aa55-586de2703ee6",
+      "brand": "Tesla",
+      "model": "Model S",
+      "year": 2020,
+      "color": "Red",
+      "price": 75000
+    },
+    {
+      "uuid": "8c47d446-2a68-4672-a01d-6c93576a41d0",
+      "brand": "Subaru",
+      "model": "Outback",
+      "year": 2018,
+      "color": "Green",
+      "price": 28000
+    },
+    {
+      "uuid": "f6d64978-8ec8-4dd7-88ff-ebd7f836fd9a",
+      "brand": "Lexus",
+      "model": "RX",
+      "year": 2019,
+      "color": "Black",
+      "price": 45000
+    },
+    {
+      "uuid": "0447329c-2f8b-4a6f-bc20-f370ab9f36db",
+      "brand": "Mazda",
+      "model": "CX-5",
+      "year": 2021,
+      "color": "Gray",
+      "price": 32000
+    },
+    {
+      "uuid": "e49e044d-8b1b-4f1e-8c8c-b1a72d6b62a0",
+      "brand": "Jeep",
+      "model": "Wrangler",
+      "year": 2020,
+      "color": "White",
+      "price": 40000
+    },
+    {
+      "uuid": "0a4d8700-01de-4f64-bd1c-c91f0b24d54e",
+      "brand": "Nissan",
+      "model": "Altima",
+      "year": 2018,
+      "color": "Blue",
+      "price": 22000
+    },
+    {
+      "uuid": "b3e37756-68e0-46cd-bc2e-99203b71e5ae",
+      "brand": "Volvo",
+      "model": "XC90",
+      "year": 2020,
+      "color": "Silver",
+      "price": 58000
+    },
+    {
+      "uuid": "fbabcb0e-e4f4-429a-9600-447a4b0b66e6",
+      "brand": "Porsche",
+      "model": "911",
+      "year": 2019,
+      "color": "Red",
+      "price": 90000
+    },
+    {
+      "uuid": "1cc1f038-6a14-4ae3-b366-d95baf51ff13",
+      "brand": "Land Rover",
+      "model": "Range Rover",
+      "year": 2020,
+      "color": "Black",
+      "price": 95000
+    },
+    {
+      "uuid": "686f9f12-05d7-4b7a-b1ee-7a9b2c6674f2",
+      "brand": "Jaguar",
+      "model": "F-Type",
+      "year": 2018,
+      "color": "White",
+      "price": 70000
+    }
+  ]
+  
